@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0", "setuptools-git-versioning"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rigol-dp932a"
+dynamic = ["version"]
+description = "Rigol DP932A remote control"
+authors = [{ name = "Hinerk Stender", email = "hinerk.stender@mail.de" }]
+requires-python = ">=3.7"
+dependencies = [
+    'tcp_scpi @ git+https://github.com/hinerk/tcp-scpi.git@ff1adad'
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools-git-versioning]
+enabled = true
