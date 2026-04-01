@@ -33,7 +33,7 @@ class OverProtectiveParent:
             self.clear()
             self.level = level
             self.state = True
-            yield
+            yield self
         finally:
             self.state = False
 
@@ -98,7 +98,7 @@ class Channel:
         try:
             self.output = output
             self.enable()
-            yield
+            yield self
         finally:
             self.disable()
 

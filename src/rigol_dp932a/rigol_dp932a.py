@@ -54,9 +54,11 @@ class RigolDP932A:
 
     def connect(self):
         self._scpi.connect()
+        return self
 
     def close(self):
         self._scpi.close()
+        return self
 
     def __enter__(self):
         self._scpi.connect()
