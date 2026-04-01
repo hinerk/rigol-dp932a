@@ -52,6 +52,12 @@ class RigolDP932A:
         self._ch3 = Channel(3, self._scpi)
         self._analyzer = AnalyzerAPI(self._scpi)
 
+    def connect(self):
+        self._scpi.connect()
+
+    def close(self):
+        self._scpi.close()
+
     def __enter__(self):
         self._scpi.connect()
         return self
