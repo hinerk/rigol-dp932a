@@ -40,7 +40,7 @@ class OverProtectiveParent:
     @property
     def state(self) -> bool:
         return self._scpi.query(
-            f"{self._source_id}:{self._protecting}:PROT:STAT?") == "1"
+            f"{self._source_id}:{self._protecting}:PROT:STAT?").strip() == "1"
 
     @state.setter
     def state(self, value: bool):
@@ -62,7 +62,7 @@ class OverProtectiveParent:
     def tripped(self) -> bool:
         """whether the current protection tripped"""
         return self._scpi.query(
-            f"{self._source_id}:{self._protecting}:PROT:TRIP?") == "1"
+            f"{self._source_id}:{self._protecting}:PROT:TRIP?").strip() == "1"
 
     def clear(self):
         """clear OCP event"""
@@ -123,7 +123,7 @@ class Channel:
 
     @property
     def enabled(self) -> bool:
-        return self._scpi.query(f":OUTP? CH{self._channel}") == "1"
+        return self._scpi.query(f":OUTP? CH{self._channel}").strip() == "1"
 
     @enabled.setter
     def enabled(self, value):
