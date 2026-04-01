@@ -36,6 +36,7 @@ class OverProtectiveParent:
             yield self
         finally:
             self.state = False
+            self.clear()
 
     @property
     def state(self) -> bool:
