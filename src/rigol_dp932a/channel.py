@@ -2,7 +2,11 @@ from contextlib import contextmanager
 from collections import namedtuple
 from enum import Enum
 from tcp_scpi import SCPIClient
-from typing import Literal
+from typing import Literal, TypeAlias
+
+
+Volt: TypeAlias = float
+Ampere: TypeAlias = float
 
 
 class OutputMode(Enum):
@@ -111,7 +115,7 @@ class Channel:
         return Output(float(set_voltage), float(set_current))
 
     @output.setter
-    def output(self, output: Output):
+    def output(self, output: Output | tuple[Volt, Ampere]):
         output = Output(*output)
         self._scpi.send(f":APPL CH{self._channel},{output.voltage:.3f},"
                         f"{output.current:.3f}")
