@@ -47,9 +47,9 @@ class RigolDP932A:
                 logger.error(f"failed querying IDN of device due to "
                              f"scpi error: {e!r}")
 
-        self._ch1 = Channel(1, self._scpi)
-        self._ch2 = Channel(2, self._scpi)
-        self._ch3 = Channel(3, self._scpi)
+        self._ch1 = Channel(1, self._scpi, self)
+        self._ch2 = Channel(2, self._scpi, self)
+        self._ch3 = Channel(3, self._scpi, self)
         self._analyzer = AnalyzerAPI(self._scpi)
 
     def connect(self):
